@@ -1,0 +1,358 @@
+/* ============================================================
+   25EE201 — Electric Circuits and Networks
+   Shared design system (derived from the Unit I sample lesson)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #08141f;
+  --card: #10233a;
+  --well: #0d1e30;
+  --border: rgba(94, 231, 255, 0.16);
+  --border-strong: rgba(94, 231, 255, 0.28);
+  --text: #eaf3fb;
+  --text-body: #cddbe9;
+  --text-body-2: #dbe7f2;
+  --text-muted: #8fa9c2;
+  --text-muted-2: #b7cade;
+  --cyan: #5ee7ff;
+  --orange: #ffb454;
+  --green: #6ee7a8;
+  --red: #ff8577;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  background-image:
+    linear-gradient(rgba(94, 231, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 231, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+::selection { background: var(--cyan); color: var(--bg); }
+
+a { color: inherit; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s ease both; }
+
+/* ---------- Top nav ---------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(10px);
+  background: rgba(8, 20, 31, 0.85);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.site-nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.site-nav .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 10px var(--orange);
+  flex-shrink: 0;
+}
+.site-nav .brand-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.site-nav .links {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.site-nav .links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav .links a:hover,
+.site-nav .links a:focus-visible { color: var(--cyan); }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 80px 5vw 60px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.hero .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--orange);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5.5vw, 68px);
+  line-height: 1.04;
+  margin: 0 0 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.hero p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-muted-2);
+  max-width: 680px;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 5vw;
+}
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--cyan);
+}
+.section h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  margin: 0 0 32px;
+  font-weight: 600;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+@media (max-width: 760px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 32px;
+}
+.card .card-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.card ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.9;
+  color: var(--text-body-2);
+  font-size: 15.5px;
+}
+
+.well {
+  background: var(--well);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 18px 24px;
+  font-family: var(--font-mono);
+}
+
+.placeholder {
+  border: 1px dashed var(--border-strong);
+  border-radius: 14px;
+  padding: 40px 32px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: center;
+}
+.placeholder .tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  border: 1px solid rgba(255, 180, 84, 0.35);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 14px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn:hover, .btn:focus-visible {
+  background: var(--cyan);
+  color: var(--bg);
+}
+.btn.solid {
+  background: var(--cyan);
+  color: var(--bg);
+}
+.btn.solid:hover { opacity: 0.85; background: var(--cyan); color: var(--bg); }
+
+/* ---------- Lesson footer nav ---------- */
+.lesson-footer {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 5vw 80px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+.lesson-footer a {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.lesson-footer a:hover { color: var(--cyan); }
+
+/* ---------- Focus visibility (a11y) ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-up { animation: none; }
+}
+
+/* ============================================================
+   Home page specific
+   ============================================================ */
+.unit-block {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 5vw;
+}
+.unit-block .unit-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+.unit-block .unit-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--orange);
+  letter-spacing: 0.12em;
+}
+.unit-block h2 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+}
+.unit-block .unit-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.lesson-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.lesson-card:hover, .lesson-card:focus-visible {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+.lesson-card .lesson-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cyan);
+}
+.lesson-card .lesson-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.lesson-card .status {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.status.ready {
+  color: var(--green);
+  border: 1px solid rgba(110, 231, 168, 0.4);
+  background: rgba(110, 231, 168, 0.08);
+}
+.status.pending {
+  color: var(--text-muted);
+  border: 1px solid rgba(143, 169, 194, 0.35);
+  background: rgba(143, 169, 194, 0.06);
+}
